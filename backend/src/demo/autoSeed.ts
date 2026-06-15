@@ -1,4 +1,5 @@
 import { seedDemoData } from './seed';
+import { seedFlashDeals } from './seedFlashDeals';
 
 /**
  * Auto-seeds demo data on startup if DEMO_MODE=true.
@@ -14,6 +15,14 @@ export async function autoSeedIfDemoMode(): Promise<void> {
     } catch (error) {
       const message = error instanceof Error ? error.message : 'Unknown error';
       console.error('❌ Demo seed failed:', message);
+    }
+
+    try {
+      await seedFlashDeals();
+      console.log('✅ Flash Deal seed scenarios loaded successfully');
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Unknown error';
+      console.error('❌ Flash Deal seed failed:', message);
     }
   }
 }

@@ -24,7 +24,7 @@ export default function AIReasoningStream({ steps, autoPlay = true, onComplete, 
     setVisibleLines(0);
     setIsPlaying(false);
     onReplay?.();
-    setTimeout(() => setIsPlaying(true), 800);
+    setTimeout(() => setIsPlaying(true), 300);
   }, [onReplay]);
 
   useEffect(() => {
@@ -37,14 +37,14 @@ export default function AIReasoningStream({ steps, autoPlay = true, onComplete, 
     }
 
     const currentStep = steps[visibleLines];
-    let delay = 600;
+    let delay = 150;
     if (currentStep) {
       switch (currentStep.type) {
-        case 'info': delay = 500 + Math.random() * 300; break;
-        case 'success': delay = 700 + Math.random() * 400; break;
-        case 'warning': delay = 900 + Math.random() * 500; break;
-        case 'finding': delay = 1000 + Math.random() * 600; break;
-        case 'result': delay = 1200 + Math.random() * 500; break;
+        case 'info': delay = 120 + Math.random() * 80; break;
+        case 'success': delay = 150 + Math.random() * 100; break;
+        case 'warning': delay = 180 + Math.random() * 120; break;
+        case 'finding': delay = 200 + Math.random() * 150; break;
+        case 'result': delay = 250 + Math.random() * 150; break;
       }
     }
 
@@ -70,27 +70,27 @@ export default function AIReasoningStream({ steps, autoPlay = true, onComplete, 
 
   const getLineColor = (type: ReasoningStep['type']): string => {
     switch (type) {
-      case 'success': return '#4ecca3';
-      case 'warning': return '#ffd93d';
-      case 'finding': return '#6ef3d6';
-      case 'result': return '#4ecca3';
+      case 'success': return '#067D62';
+      case 'warning': return '#B8860B';
+      case 'finding': return '#0066C0';
+      case 'result': return '#067D62';
       case 'info':
-      default: return '#8b949e';
+      default: return '#565959';
     }
   };
 
   const getModuleColor = (_type: ReasoningStep['type']): string => {
-    return '#FF9900';
+    return '#C7511F';
   };
 
   return (
     <div style={wrapperStyle}>
       {/* White card header */}
       <div style={cardHeaderStyle}>
-        <span style={{ fontWeight: 600, fontSize: '16px', color: '#0F1111' }}>
+        <span style={{ fontWeight: 700, fontSize: '18px', color: '#0F1111' }}>
           AI Classification Engine
         </span>
-        <span style={{ fontSize: '13px', color: '#565959' }}>
+        <span style={{ fontSize: '14px', color: '#565959', fontWeight: 600 }}>
           {isPlaying ? 'Processing...' : visibleLines === 0 ? 'Initializing...' : 'Classification Complete'}
         </span>
         <button onClick={resetAndPlay} style={replayBtnStyle}>
@@ -166,21 +166,25 @@ const replayBtnStyle: React.CSSProperties = {
 };
 
 const containerStyle: React.CSSProperties = {
-  background: '#0d1117',
+  background: '#FAFAFA',
   overflow: 'hidden',
 };
 
 const bodyStyle: React.CSSProperties = {
-  padding: '1rem',
+  padding: '1.25rem',
   fontFamily: "'Courier New', Courier, monospace",
-  fontSize: '13px',
-  maxHeight: '400px',
+  fontSize: '16px',
+  fontWeight: 700,
+  maxHeight: '420px',
   overflowY: 'auto',
-  lineHeight: 1.8,
+  lineHeight: 2.0,
+  color: '#0F1111',
+  letterSpacing: '0.2px',
 };
 
 const cursorStyle: React.CSSProperties = {
-  color: '#FF9900',
+  color: '#C7511F',
   animation: 'blink 1s infinite',
-  fontSize: '14px',
+  fontSize: '16px',
+  fontWeight: 700,
 };

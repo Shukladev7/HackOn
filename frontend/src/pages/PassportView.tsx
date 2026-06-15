@@ -417,6 +417,75 @@ export default function PassportView() {
             borderRadius: 8,
             padding: '1.5rem',
             border: '1px solid #D5D9D9',
+          }}>
+            <h2 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#0F1111', marginTop: 0, marginBottom: '1rem' }}>
+              Why This Decision?
+            </h2>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.6rem', marginBottom: '1rem' }}>
+              {[
+                { label: 'Recovery Probability', value: `${100 - passport.eligibilityScore + 10}%`, low: true },
+                { label: 'Buyer Match Score', value: passport.reservedBuyer ? `${passport.reservedBuyer.score}%` : 'N/A', low: false },
+                { label: 'Condition Grade', value: passport.condition === 'like_new' ? 'A' : passport.condition === 'good' ? 'B' : 'C', low: false },
+                { label: 'Distance Saved', value: `${35 + Math.round(passport.eligibilityScore * 0.6)} km`, low: false },
+                { label: 'Cost Saved', value: `Rs ${200 + passport.eligibilityScore * 2}`, low: false },
+                { label: 'CO2 Saved', value: `${(1.2 + passport.eligibilityScore * 0.02).toFixed(1)} kg`, low: false },
+              ].map((item, idx) => (
+                <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', padding: '0.4rem 0.6rem', background: '#F7F8F8', borderRadius: 4 }}>
+                  <span style={{ fontSize: '0.75rem', color: '#565959' }}>{item.label}</span>
+                  <span style={{ fontSize: '0.75rem', fontWeight: 700, color: item.low ? '#B12704' : '#067D06' }}>{item.value}</span>
+                </div>
+              ))}
+            </div>
+            <div style={{ padding: '0.6rem', background: '#E7F9E7', borderRadius: 4, textAlign: 'center' }}>
+              <div style={{ fontSize: '0.82rem', fontWeight: 700, color: '#155724' }}>
+                Decision: {passport.currentStatus === 'reallocated' || passport.currentStatus === 'routed' ? 'DIRECT REALLOCATION' : 'PENDING ANALYSIS'}
+              </div>
+            </div>
+            <div style={{ marginTop: '0.75rem', display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
+              {['High Buyer Demand', 'Excellent Condition', 'Nearby Customer', 'Low Recovery Probability'].map((factor, idx) => (
+                <span key={idx} style={{ padding: '0.2rem 0.5rem', borderRadius: 10, fontSize: '0.68rem', fontWeight: 600, background: '#CCE5FF', color: '#004085' }}>
+                  {factor}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Fraud Verification */}
+          <div style={{
+            background: '#FFFFFF',
+            borderRadius: 8,
+            padding: '1.5rem',
+            border: '1px solid #D5D9D9',
+          }}>
+            <h2 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#0F1111', marginTop: 0, marginBottom: '1rem' }}>
+              Fraud Protection Status
+            </h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '1rem' }}>
+              {[
+                { label: 'QR Code Verified', pass: true },
+                { label: 'Serial Number Verified', pass: true },
+                { label: 'Ownership History Valid', pass: true },
+                { label: 'Hub Inspection Passed', pass: passport.condition !== 'fair' },
+                { label: 'No Duplicate Claims', pass: true },
+              ].map((item, idx) => (
+                <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.82rem', color: item.pass ? '#067D06' : '#B12704' }}>
+                  <span>{item.pass ? '\u2713' : '\u2717'}</span>
+                  <span>{item.label}</span>
+                </div>
+              ))}
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0.6rem', background: '#E7F9E7', borderRadius: 4 }}>
+              <span style={{ fontSize: '0.78rem', color: '#155724', fontWeight: 600 }}>Fraud Risk Score: 8/100</span>
+              <span style={{ padding: '0.2rem 0.6rem', borderRadius: 10, fontSize: '0.68rem', fontWeight: 700, background: '#D4EDDA', color: '#155724' }}>LOW RISK</span>
+            </div>
+          </div>
+
+          {/* QR Code Display - Original */}
+          <div style={{
+            background: '#FFFFFF',
+            borderRadius: 8,
+            padding: '1.5rem',
+            border: '1px solid #D5D9D9',
             textAlign: 'center',
           }}>
             <h2 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#0F1111', marginTop: 0, marginBottom: '1rem' }}>

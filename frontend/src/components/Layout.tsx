@@ -2,6 +2,7 @@ import { NavLink, Outlet } from 'react-router-dom';
 
 const navItems = [
   { to: '/', label: 'Dashboard' },
+  { to: '/flash-deals', label: '⚡ Flash Deals' },
   { to: '/circular', label: 'Circular Routing' },
   { to: '/passports', label: 'Product Passports' },
   { to: '/scanner', label: 'QR Scanner' },

@@ -235,6 +235,119 @@ export default function CircularDashboard() {
         </button>
       </div>
 
+      {/* Return Economics Comparison */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginBottom: '2rem' }}>
+        {/* Traditional Return */}
+        <div style={{ background: '#FFFFFF', borderRadius: 8, padding: '1.5rem', border: '1px solid #D5D9D9' }}>
+          <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#B12704', margin: '0 0 1rem' }}>Traditional Return</h3>
+          <div style={{ fontSize: '0.82rem', lineHeight: 2.2, color: '#0F1111' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <span>Pickup Cost</span><span style={{ fontWeight: 600 }}>Rs 60</span>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <span>Line Haul to Warehouse</span><span style={{ fontWeight: 600 }}>Rs 80</span>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <span>Warehouse Handling</span><span style={{ fontWeight: 600 }}>Rs 120</span>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <span>Repackaging</span><span style={{ fontWeight: 600 }}>Rs 40</span>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <span>Redispatch to Buyer</span><span style={{ fontWeight: 600 }}>Rs 90</span>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', borderTop: '2px solid #B12704', marginTop: '0.5rem', paddingTop: '0.5rem', fontWeight: 700, fontSize: '0.95rem' }}>
+              <span>Total</span><span style={{ color: '#B12704' }}>Rs 390</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Circular Routing */}
+        <div style={{ background: '#FFFFFF', borderRadius: 8, padding: '1.5rem', border: '1px solid #D5D9D9' }}>
+          <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#067D06', margin: '0 0 1rem' }}>Circular Routing</h3>
+          <div style={{ fontSize: '0.82rem', lineHeight: 2.2, color: '#0F1111' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <span>Pickup Cost</span><span style={{ fontWeight: 600 }}>Rs 60</span>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <span>Hub Processing</span><span style={{ fontWeight: 600 }}>Rs 40</span>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <span>Direct Redispatch</span><span style={{ fontWeight: 600 }}>Rs 70</span>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', borderTop: '2px solid #067D06', marginTop: '0.5rem', paddingTop: '0.5rem', fontWeight: 700, fontSize: '0.95rem' }}>
+              <span>Total</span><span style={{ color: '#067D06' }}>Rs 170</span>
+            </div>
+          </div>
+          <div style={{ marginTop: '1rem', padding: '0.75rem', background: '#E7F9E7', borderRadius: 6, textAlign: 'center' }}>
+            <div style={{ fontSize: '1.4rem', fontWeight: 700, color: '#067D06' }}>Rs 220 Saved</div>
+            <div style={{ fontSize: '0.78rem', color: '#155724' }}>56% Cost Reduction Per Package</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Sustainability + Fraud + Impact Row */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1rem', marginBottom: '2rem' }}>
+        {/* Carbon Savings */}
+        <div style={{ background: '#FFFFFF', borderRadius: 8, padding: '1.25rem', border: '1px solid #D5D9D9' }}>
+          <h3 style={{ fontSize: '0.88rem', fontWeight: 700, color: '#0F1111', margin: '0 0 0.75rem' }}>Environmental Impact</h3>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <span style={{ fontSize: '0.78rem', color: '#565959' }}>CO2 Saved</span>
+              <span style={{ fontSize: '1.1rem', fontWeight: 700, color: '#067D06' }}>31.2 Tons</span>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <span style={{ fontSize: '0.78rem', color: '#565959' }}>Distance Avoided</span>
+              <span style={{ fontSize: '1.1rem', fontWeight: 700, color: '#004085' }}>1,09,140 km</span>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <span style={{ fontSize: '0.78rem', color: '#565959' }}>Avg Saved/Package</span>
+              <span style={{ fontSize: '1.1rem', fontWeight: 700, color: '#155724' }}>2.4 kg CO2</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Fraud Protection */}
+        <div style={{ background: '#FFFFFF', borderRadius: 8, padding: '1.25rem', border: '1px solid #D5D9D9' }}>
+          <h3 style={{ fontSize: '0.88rem', fontWeight: 700, color: '#0F1111', margin: '0 0 0.75rem' }}>Fraud Protection</h3>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+            {[
+              { label: 'QR Verification', pass: true },
+              { label: 'Serial Number Match', pass: true },
+              { label: 'Ownership History Valid', pass: true },
+              { label: 'Hub Inspection Passed', pass: true },
+            ].map((item, idx) => (
+              <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.78rem', color: '#067D06' }}>
+                <span>{'\u2713'}</span>
+                <span>{item.label}</span>
+              </div>
+            ))}
+            <div style={{ marginTop: '0.5rem', padding: '0.4rem 0.6rem', background: '#E7F9E7', borderRadius: 4, textAlign: 'center' }}>
+              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#155724' }}>Risk Level: LOW</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Climate Pledge */}
+        <div style={{ background: '#FFFFFF', borderRadius: 8, padding: '1.25rem', border: '1px solid #D5D9D9' }}>
+          <h3 style={{ fontSize: '0.88rem', fontWeight: 700, color: '#0F1111', margin: '0 0 0.75rem' }}>Climate Goals Alignment</h3>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+            {[
+              'Reduced Warehouse Processing',
+              'Reduced Transportation Distance',
+              'Extended Product Lifecycles',
+              'Lower Carbon Emissions',
+              'Zero-Waste Packaging Reuse',
+            ].map((item, idx) => (
+              <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.78rem', color: '#004085' }}>
+                <span>{'\u2713'}</span>
+                <span>{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* Recent Routing Cases */}
       <div style={{
         background: '#FFFFFF',

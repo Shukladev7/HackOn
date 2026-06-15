@@ -14,6 +14,7 @@ import PassportList from './pages/PassportList';
 import ResaleMarketplace from './pages/ResaleMarketplace';
 import SellProduct from './pages/SellProduct';
 import InspectionCenter from './pages/InspectionCenter';
+import FlashDeals from './pages/FlashDeals';
 // DemoBanner available for overlay mode if needed
 // import DemoBanner from './components/DemoBanner';
 
@@ -36,6 +37,7 @@ function App() {
           <Route path="resale" element={<ResaleMarketplace />} />
           <Route path="sell" element={<SellProduct />} />
           <Route path="inspection" element={<InspectionCenter />} />
+          <Route path="flash-deals" element={<FlashDeals />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -11,6 +11,7 @@ import configRouter from './routes/configRoutes';
 import metricsRouter from './routes/metrics';
 import demoRouter from './routes/demo';
 import passportRouter from './routes/passport';
+import flashDealsRouter from './routes/flashDeals';
 import { autoSeedIfDemoMode } from './demo/autoSeed';
 import { config } from './config';
 
@@ -65,6 +66,9 @@ app.use('/api/v1/demo', demoRouter);
 
 // Passport routes (Circular Routing Engine)
 app.use('/api/v1/passports', passportRouter);
+
+// Flash Deal Eligibility Engine routes
+app.use('/api/v1/flash-deals', flashDealsRouter);
 
 app.listen(PORT, () => {
   console.log(`RTO Reallocation Backend running on port ${PORT}`);

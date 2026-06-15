@@ -84,6 +84,40 @@ export const config = {
   evidenceRetentionDays: envInt('EVIDENCE_RETENTION_DAYS', 90),
   eventRetentionDays: envInt('EVENT_RETENTION_DAYS', 365),
   auditRetentionYears: envInt('AUDIT_RETENTION_YEARS', 7),
+
+  // Flash Deal Eligibility Engine
+  flashDeal: {
+    // Pipeline stage durations
+    minStageDurationMs: envInt('FLASH_DEAL_MIN_STAGE_DURATION_MS', 500),
+    maxStageDurationMs: envInt('FLASH_DEAL_MAX_STAGE_DURATION_MS', 2000),
+    totalMinDurationMs: envInt('FLASH_DEAL_TOTAL_MIN_DURATION_MS', 3000),
+    totalMaxDurationMs: envInt('FLASH_DEAL_TOTAL_MAX_DURATION_MS', 8000),
+    progressIntervalMs: envInt('FLASH_DEAL_PROGRESS_INTERVAL_MS', 200),
+
+    // Cost defaults (INR)
+    reversePickupCost: envInt('FLASH_DEAL_REVERSE_PICKUP_COST', 120),
+    hubProcessingCost: envInt('FLASH_DEAL_HUB_PROCESSING_COST', 80),
+    warehouseInboundCost: envInt('FLASH_DEAL_WAREHOUSE_INBOUND_COST', 90),
+    reListingCost: envInt('FLASH_DEAL_RELISTING_COST', 100),
+    localDeliveryCost: envInt('FLASH_DEAL_LOCAL_DELIVERY_COST', 120),
+    inspectionCost: envInt('FLASH_DEAL_INSPECTION_COST', 50),
+
+    // Sustainability
+    warehouseReturnDistance: envInt('FLASH_DEAL_WAREHOUSE_RETURN_DISTANCE', 100),
+    emissionFactor: envFloat('FLASH_DEAL_EMISSION_FACTOR', 0.027),
+
+    // Score weights
+    conditionWeight: envFloat('FLASH_DEAL_CONDITION_WEIGHT', 0.30),
+    demandWeight: envFloat('FLASH_DEAL_DEMAND_WEIGHT', 0.30),
+    financialWeight: envFloat('FLASH_DEAL_FINANCIAL_WEIGHT', 0.25),
+    locationWeight: envFloat('FLASH_DEAL_LOCATION_WEIGHT', 0.15),
+
+    // Demo mode
+    demoMode: process.env.DEMO_MODE === 'true',
+
+    // SSE timeout
+    sseTimeoutSeconds: envInt('FLASH_DEAL_SSE_TIMEOUT_SECONDS', 120),
+  },
 } as const;
 
 export type Config = typeof config;

@@ -9,3 +9,5 @@ export { DecisionRecord, IDecisionRecord } from './DecisionRecord';
 export { EventStream, IEventStream } from './EventStream';
 export { EvidenceStore, IEvidenceStore } from './EvidenceStore';
 export { ProductPassport, IProductPassport } from './ProductPassport';
+export { FlashDealEvaluation, IFlashDealEvaluation, DispositionDecision, IFactor, IScoreContributor } from './FlashDealEvaluation';
+export { FlashDealSeedScenario, IFlashDealSeedScenario, IFeatureVector } from './FlashDealSeedScenario';
